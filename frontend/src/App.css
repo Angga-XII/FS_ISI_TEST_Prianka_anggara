@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'poppins';
+}
+
+.align-left{
+  display: inline;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.main-title{
+  color: black;
+  margin-bottom: 20px;
+}
+
+.tb-title{
+  color: black;
+  /* margin-bottom: 5px; */
+}
+
+.add-task-text{
+  border-color: black;
+  color: black;
+  border-width: 2px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+}
+
+.add-task{
+  background-color: #6FCBFF;
+  color: black;
+}
+
+.confirm-edit{
+  background-color: #FFB46F;
+  color: black;
+  margin-right: 5px
+}
+
+.cancel-edit{
+  background-color: #FF6F6F;
+  color: black;
+  margin-left: 5px;
+}
+
+.task-type{
+  color: black;
+  font-weight: bold;
+  font-size:  20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* text-lg font-bold mt-4 mb-2 */
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  margin-bottom: 8px;
+  border: black;
+  border-radius: 10px;
+  background-color: #D0D0D0;
+  padding: 15px;
+ }
+
+ .task-text{
+  font-size: larger;
+  margin-bottom: 7px;
+ }
+ 
+ .toggle-btn{
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+ }
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}

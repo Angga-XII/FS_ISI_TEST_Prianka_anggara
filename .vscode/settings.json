@@ -1,0 +1,4 @@
+{
+    "docker.languageserver.diagnostics.directiveCasing": "ignore",
+    "docker.languageserver.diagnostics.instructionCasing": "ignore"
+}
