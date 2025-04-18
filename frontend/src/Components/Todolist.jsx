@@ -23,9 +23,13 @@ function TodoList() {
     const [tasks, setTasks] = useState([])
    
     useEffect(() => {
+        updateUIList()
+    }, [])
+
+    function updateUIList(){
         getallTasks()
         .then((res) => setTasks(res))
-    }, [])
+    }
 
     function addTask() {
         if(text){
@@ -36,7 +40,7 @@ function TodoList() {
                 is_completed: false
             };
             postnewTask(newTask)
-            setTasks([...tasks, newTask]);
+            
             setText('');
         } else {
             alert("Title cannot be empty !");
@@ -45,21 +49,22 @@ function TodoList() {
     }
 
     function deleteTask(id) {
-        setTasks(tasks.filter(task => task.id !== id));
         deletenewTask(id)
+        
     }
 
     function toggleTask(id) {
-        setTasks(tasks.map(task => {
+        tasks.map(task => {
             if (task.id === id) {
                 const updated =  { ...task, is_completed: !task.is_completed }
                 putEditTask(updated)
+                
                 return updated;
             } else {
                 return task;
             }
-        }));
-
+        });
+        
     }
 
     function editTask(edittedTask) {
@@ -69,7 +74,7 @@ function TodoList() {
     }
 
     function confirmEdit() {
-        setTasks (tasks.map((task) => {
+        tasks.map((task) => {
             setButtonType('add')
             if (task.id === edittedId) {
                 setText('')
@@ -80,7 +85,8 @@ function TodoList() {
                 setText('')
                 return task;
             }
-        }))
+        })
+        
     }
 
     function cancelEdit(edittedTask) {
@@ -102,7 +108,7 @@ function TodoList() {
             if (!response.ok) throw new Error("Failed to add task");
         
             const savedTask = await response.json();
-            
+            updateUIList()
         } catch (error) {
             console.error("Error adding task:", error);
             alert("Something went wrong while saving the task.");
@@ -152,6 +158,7 @@ function TodoList() {
             });
         
             if (!response.ok) throw new Error("Failed to edit task");
+            updateUIList()
         } catch (error) {
             console.error("Error editing task:", error);
             alert("Something went wrong while editing the task.");
@@ -167,7 +174,7 @@ function TodoList() {
             if (!response.ok) throw new Error("Failed to delete task");
         
             const savedTask = await response.json();
-            
+            updateUIList()
         } catch (error) {
             console.error("Error delete task:", error);
             alert("Something went wrong while deleting the task.");

@@ -40,7 +40,15 @@ def create_todo():
 def get_todos():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, text, date, is_completed FROM todos;")
+    cur.execute("""
+            SELECT id, text, date, is_completed
+            FROM todos
+            ORDER BY 
+                is_completed ASC,                 
+                is_completed,                     
+                date ASC NULLS LAST               
+            ;
+    """)
     todos = cur.fetchall()
     cur.close()
     conn.close()
